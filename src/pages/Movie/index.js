@@ -32,9 +32,25 @@ function Movie() {
     };
   }, []);
 
+  if (loading) {
+    return (
+      <div>
+        <h1>Loading details...</h1>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h1>Acessando o filme {id}</h1>
+    <div className="filme-info">
+      <h1>{movie.title}</h1>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+        alt={movie.title}
+      />
+      <h3>Overview</h3>
+      <span>{movie.overview}</span>
+
+      <strong>Rating: {movie.vote_average} / 10</strong>
     </div>
   );
 }
