@@ -8,7 +8,7 @@ function Header() {
         Prime Flix
       </Link>
       <Link className="favorits" to="/favorits">
-        My favorits movies
+        My favorit movies
       </Link>
     </header>
   );
