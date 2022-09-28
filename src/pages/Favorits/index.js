@@ -10,9 +10,19 @@ function Favorits() {
     setMovies(JSON.parse(myList) || []);
   }, []);
 
+  function deleteMovie(id) {
+    let filterMovie = movies.filter((item) => {
+      return item.id !== id;
+    });
+    setMovies(filterMovie);
+    localStorage.setItem("@primeflix", JSON.stringify(filterMovie));
+  }
+
   return (
     <div className="my-movies">
       <h1>My movies</h1>
+
+      {movies.length === 0 && <span>You don't have any saved movie :( </span>}
 
       <ul>
         {movies.map((item) => {
@@ -21,7 +31,7 @@ function Favorits() {
               <span>{item.title}</span>
               <div>
                 <Link to={`/movie/${item.id}`}>Movie details</Link>
-                <button>Excluir</button>
+                <button onClick={() => deleteMovie(item.id)}>Excluir</button>
               </div>
             </li>
           );
