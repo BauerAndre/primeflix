@@ -35,6 +35,25 @@ function Movie() {
     };
   }, [navigate, id]);
 
+  function saveMovie() {
+    const myList = localStorage.getItem("@primeflix");
+
+    let savedMovies = JSON.parse(myList) || [];
+
+    const hasMovie = savedMovies.some(
+      (savedMovie) => savedMovie.id === movie.id
+    );
+
+    if (hasMovie) {
+      alert("THIS MOVIE IS ALREADY IN THE LIST");
+      return;
+    }
+
+    savedMovies.push(movie);
+    localStorage.setItem("@primeflix", JSON.stringify(savedMovies));
+    alert("Movie sucessfuly saved");
+  }
+
   if (loading) {
     return (
       <div>
@@ -56,10 +75,10 @@ function Movie() {
       <strong>Rating: {movie.vote_average} / 10</strong>
 
       <div className="area-buttons">
-        <button>Save</button>
+        <button onClick={saveMovie}>Save</button>
         <button>
           <a
-            target="_blank"
+            target="blank"
             rel="external"
             href={`https://youtube.com/results?search_query=${movie.title} Trailer`}
           >
