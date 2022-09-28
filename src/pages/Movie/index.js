@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./movie-info.css";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 function Movie() {
   const { id } = useParams();
