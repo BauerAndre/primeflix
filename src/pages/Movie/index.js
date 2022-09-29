@@ -46,13 +46,13 @@ function Movie() {
     );
 
     if (hasMovie) {
-      alert("THIS MOVIE IS ALREADY IN THE LIST");
+      toast.warn("THIS MOVIE IS ALREADY IN THE LIST");
       return;
     }
 
     savedMovies.push(movie);
     localStorage.setItem("@primeflix", JSON.stringify(savedMovies));
-    alert("Movie sucessfuly saved");
+    toast.success("Movie sucessfuly saved");
   }
 
   if (loading) {
